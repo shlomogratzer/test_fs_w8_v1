@@ -1,13 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import From from './form-comp/From'
 import './App.module.css'
+import { Mission } from './Types/Mission'
+import { create } from './services/apiQuery'
+import { useState } from 'react'
 
 function App() {
 
+  const addMisseion = async(mission:Mission) => {
+    const res = await create(mission)
+    return res
+  }
   return (
     <>
-    <div><h1>Hello</h1></div>
+    <div>
+      <From addMisseion={addMisseion}/>
+    </div>
     </>
   )
 }
